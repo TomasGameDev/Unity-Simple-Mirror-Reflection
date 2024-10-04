@@ -4,6 +4,8 @@ using System.Collections;
 [ExecuteInEditMode]
 public class Mirror : MonoBehaviour
 {
+    public float reflectionScale = 1f;
+    [Space]
     public Transform mainCameraTransform;
     [Space]
     public Camera mirrorCamera;
@@ -26,10 +28,10 @@ public class Mirror : MonoBehaviour
             mirrorCamera.targetTexture = renderTexture;
             surface.material.mainTexture = renderTexture;
         }
-        Vector3 localPos = mirrorCenter.InverseTransformPoint(mainCameraTransform.position);
+        Vector3 localPos = mirrorCenter.InverseTransformPoint(mainCameraTransform.position) * reflectionScale;
         mirrorCamera.lensShift = new Vector2(-localPos.x, -localPos.y);
         mirrorCamera.focalLength = mirrorCamera.sensorSize.x * localPos.z;//renderCam.sensorSize.x = 12.8
         mirrorCamera.transform.localPosition = Vector3.Reflect(localPos, Vector3.forward);
-        mirrorCamera.nearClipPlane = -mirrorCamera.transform.localPosition.z * transform.localScale.x;
+        mirrorCamera.nearClipPlane = -mirrorCamera.transform.localPosition.z * mirrorCenter.localScale.x;
     }
 }

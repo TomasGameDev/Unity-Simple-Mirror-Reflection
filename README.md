@@ -1,4 +1,4 @@
-The most common display in Unity based on the Unity physical camera settings.
+A regular mirror in Unity based on the Unity physical camera settings.
 
 ![image](https://github.com/user-attachments/assets/81879c47-83dc-47f0-a030-5c040370747c)
 

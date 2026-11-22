@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections;
 
+namespace Roy
+{
 [ExecuteInEditMode]
 public class Mirror : MonoBehaviour
 {
@@ -34,4 +36,5 @@ public class Mirror : MonoBehaviour
         mirrorCamera.transform.localPosition = Vector3.Reflect(localPos, Vector3.forward);
         mirrorCamera.nearClipPlane = -mirrorCamera.transform.localPosition.z * mirrorCenter.localScale.x;
     }
+}
 }
